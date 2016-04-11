@@ -61,6 +61,7 @@ For example:
 import channels
 
 channels.Channel('slack.send').send({'text': 'Why hello there!', 'channel': 'general'})
+```
 
 Of course, part of the beauty of channels is that this can be done from anywhere.
 
