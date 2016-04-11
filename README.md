@@ -83,6 +83,6 @@ This simply bridges your slack team to your production application in real-time.
 # Todo
 
 1. Testing: I would appreciate help testing twisted clients.
-2. Setting up the reply channel: Right now the 
+2. Setting up the reply channel: Right now both djangobot and applications must hard-code the `slack.send` outgoing channel name which isn't ideal.
 2. Logging: Djangobot could `logger.debug` a lot more.
 
