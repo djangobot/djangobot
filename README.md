@@ -55,6 +55,15 @@ channel_routing = {
 
 To send messages to slack, simply send a dictionary at least a `text` key. You may optionally include the `channel` on which to post the message. This can be the human-readable version or a channel id. Note that `djangobot` necessarily posts messages as the user tied to your Slack API token.
 
+For example:
+
+```python
+import channels
+
+channels.Channel('slack.send').send({'text': 'Why hello there!', 'channel': 'general'})
+
+Of course, part of the beauty of channels is that this can be done from anywhere.
+
 # Why is this useful?
 
 This simply bridges your slack team to your production application in real-time. On it's own, it does nothing else. Implementing actual features is up to you. Off the top of my head, some ideas:
