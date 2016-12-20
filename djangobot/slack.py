@@ -120,6 +120,6 @@ class SlackAPI(object):
             channel = [channel for channel in self.channels
                        if channel['id'] == channel_id][0]
         except IndexError:
-            raise Exception('Unknown channel for id: "{}"'.format(channel_id))
+            raise ValueError('Unknown channel for id: "{}"'.format(channel_id))
         else:
             return channel
