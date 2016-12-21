@@ -72,7 +72,7 @@ class SlackClientProtocol(WebSocketClientProtocol):
         # translate user
         try:
             user_id = message.pop('user')
-            user = self.slack.user_from_id(user_id) 
+            user = self.slack.user_from_id(user_id)
             message[u'user'] = user['name']
         except (KeyError, IndexError, ValueError):
             pass
@@ -85,15 +85,11 @@ class SlackClientProtocol(WebSocketClientProtocol):
             pass
         return message
 
-    def sendHello(self):
-        self.sendMessage(self.make_message('<yawn /> Why hello there.', 'general'))
-
     def onOpen(self):
         """
         Store this protocol instance in the factory and wave hello.
         """
         self.factory.protocols.append(self)
-        self.sendHello()
 
     def onMessage(self, payload, isBinary):
         """
