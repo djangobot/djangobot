@@ -1,7 +1,7 @@
 import json
 
 from autobahn.twisted.websocket import (WebSocketClientProtocol,
-    WebSocketClientFactory, connectWS)
+                                        WebSocketClientFactory, connectWS)
 import channels
 from twisted.internet import reactor, ssl
 from twisted.internet.ssl import ClientContextFactory
@@ -78,7 +78,11 @@ class SlackClientProtocol(WebSocketClientProtocol):
             pass
         # translate channel
         try:
-            channel_id = message.pop('channel')
+            if type(message['channel']) == str:
+                channel_id = message.pop('channel')
+            else:
+                channel_id = message.pop('channel')['id']
+                self.slack.reload_channels()
             channel = self.slack.channel_from_id(channel_id)
             message[u'channel'] = channel['name']
         except (KeyError, IndexError, ValueError):
