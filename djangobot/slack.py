@@ -123,3 +123,6 @@ class SlackAPI(object):
             raise ValueError('Unknown channel for id: "{}"'.format(channel_id))
         else:
             return channel
+
+    def reload_channels(self):
+        self._channels = None
